@@ -35,7 +35,11 @@ Binds an event listener to the given `type` of event, using `fn` and `useCapture
 
 Also works with multiple events:
 ```javascript
-document.bind('transition end webkitTransitionEnd MozTransitionEnd', end, false);
+document.bind('transitionend webkitTransitionEnd MozTransitionEnd', transitionEnd);
+
+function transitionEnd(e) {
+	// this function is called for all three events
+}
 ```
 
 ###### `element.unbind(type, fn, useCapture)`
