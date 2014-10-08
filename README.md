@@ -2,7 +2,9 @@ This is a collection of prototypes for standard DOM Classes that I've found very
 
 ## API
 
-#### `element.find(query)`
+#### DOM Querying/Manipulation
+
+###### `element.find(query)`
 
 Finds the first child element that matches `selector` and returns it. Just a quick wrapper around `querySelector`.
 
@@ -12,23 +14,22 @@ element.find('.class');
 docFragment.find('.class');
 ```
 
-#### `element.findAll(query)`
+###### `element.findAll(query)`
 
 Finds all children elements that match `selector` and returns them as a NodeList. Just a quick wrapper around `querySelectorAll`.
 
-#### `element.findParent(query)`
+###### `element.findParent(query)`
 
 Retrieves the first parent elements that match `selector` and returns it.
 
-#### `element.remove()`
+###### `element.remove()`
 
 Removes the element from the DOM. Uses the browser-native function if it exists.
 
-#### `nodeList.forEach(fn)`
 
-A wrapper around `Array.forEach` for a NodeList.
+#### Events
 
-#### `element.bind(type, fn, useCapture)`
+###### `element.bind(type, fn, useCapture)`
 
 Binds an event listener to the given `type` of event, using `fn` and `useCapture`. Works on Elements, NodeLists, and the Document and Window.
 
@@ -37,15 +38,15 @@ Also works with multiple events:
 document.bind('transition end webkitTransitionEnd MozTransitionEnd', end, false);
 ```
 
-#### `element.unbind(type, fn, useCapture)`
+###### `element.unbind(type, fn, useCapture)`
 
 Unbinds event listeners of the given `type`. Also works with multiple events.
 
-#### `element.once(type, fn, useCapture)`
+###### `element.once(type, fn, useCapture)`
 
 Binds an event listener that only runs once and then removes itself.
 
-#### `element.delegate(type, selector, fn, useCapture)`
+###### `element.delegate(type, selector, fn, useCapture)`
 
 Delegates all `type` events from `selector` to element. This is useful if you're constantly adding and removing elements to the DOM that need event listeners.
 
@@ -60,7 +61,13 @@ newTodo.click();
 // newTodo will have it's click preventDefault'd, even though it didn't exist when we assigned the listener
 ```
 
-#### `nodeList.toArray()`
+#### Utilities
+
+###### `nodeList.forEach(fn)`
+
+A wrapper around `Array.forEach` for a NodeList.
+
+###### `nodeList.toArray()`
 
 Simple function to convert `NodeList`s and `HTMLCollection`s to Arrays. Helpful for using any browser array functionality like `#filter()` or `#map()` on the results of `findAll`.
 
