@@ -45,9 +45,8 @@
 	}
 
 	NodeList.prototype.forEach = Array.prototype.slice.call(this).forEach;
-	NodeList.prototype.last = function() {
-		return this[this.length - 1];
-	}
+	NodeList.prototype.first = function() { return this[0]; }
+	NodeList.prototype.last = function() { return this[this.length - 1]; }
 
 	/**
 	 * Removes this element or all the nodes in the nodelist
