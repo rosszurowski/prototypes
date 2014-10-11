@@ -4,7 +4,7 @@ This is a collection of prototypes for standard DOM Classes that I've found very
 
 #### DOM Querying/Manipulation
 
-###### `element.find(query)`
+###### #find(query)
 
 Finds the first child element that matches `selector` and returns it. Just a quick wrapper around `querySelector`.
 
@@ -14,22 +14,22 @@ element.find('.class');
 docFragment.find('.class');
 ```
 
-###### `element.findAll(query)`
+###### #findAll(query)
 
 Finds all children elements that match `selector` and returns them as a NodeList. Just a quick wrapper around `querySelectorAll`.
 
-###### `element.findParent(query)`
+###### #findParent(query)
 
 Retrieves the first parent elements that match `selector` and returns it.
 
-###### `element.remove()`
+###### #remove()
 
 Removes the element from the DOM. Uses the browser-native function if it exists.
 
 
 #### Events
 
-###### `element.bind(type, fn, useCapture)`
+###### #bind(type, fn, [useCapture])
 
 Binds an event listener to the given `type` of event, using `fn` and `useCapture`. Works on Elements, NodeLists, and the Document and Window.
 
@@ -42,15 +42,15 @@ function transitionEnd(e) {
 }
 ```
 
-###### `element.unbind(type, fn, useCapture)`
+###### #unbind(type, fn, [useCapture])
 
 Unbinds event listeners of the given `type`. Also works with multiple events.
 
-###### `element.once(type, fn, useCapture)`
+###### #once(type, fn, useCapture)
 
 Binds an event listener that only runs once and then removes itself.
 
-###### `element.delegate(type, selector, fn, useCapture)`
+###### #delegate(type, selector, fn, useCapture)
 
 Delegates all `type` events from `selector` to element. This is useful if you're constantly adding and removing elements to the DOM that need event listeners.
 
@@ -67,11 +67,11 @@ newTodo.click();
 
 #### Utilities
 
-###### `nodeList.forEach(fn)`
+###### #forEach(fn)
 
 A wrapper around `Array.forEach` for a NodeList.
 
-###### `nodeList.toArray()`
+###### #toArray()
 
 Simple function to convert `NodeList`s and `HTMLCollection`s to Arrays. Helpful for using any browser array functionality like `#filter()` or `#map()` on the results of `findAll`.
 
