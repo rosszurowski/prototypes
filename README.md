@@ -79,9 +79,11 @@ Simple function to convert `NodeList`s and `HTMLCollection`s to Arrays. Helpful 
 
 **Yes, it uses prototypes**, hence the name.
 
-People are always very scared about using prototypes, though projects like (SugarJS)[http://sugarjs.com] are helping to alleviate this. This fear of prototypes makes sense when building a large web app with a massive team: having unexpected functions and properties polluting your object's enumerable properties can be catastrophic. But, building one-off sites is a whole other deal.
+People have been very scared about using prototypes for a while, though projects like [SugarJS](http://sugarjs.com) are changing this. This fear of prototypes makes sense when building a large web app with a massive team: having unexpected functions and properties polluting your object's enumerable properties can be catastrophic. But, building one-off sites is a whole other deal.
 
-Especially with ECMAScript 5, we can now add non-enumerable properties and functions to objects, addressing these concerns. 
+Especially with ECMAScript 5, we can now add non-enumerable properties and functions to objects, addressing enumerable concerns concerns. 
+
+And for issues like the [volatility of "host objects"](http://sugarjs.com/native#modifying_host_objects), these problems exist for all web libraries, which rely on host objects to access other host objects. While not guaranteed, browser JS APIs are designed with heavy discussion around backwards-compatibility. And again, for building one-off sites, this is hardly a major issue.
 
 #### Native APIs Intersecting
 
