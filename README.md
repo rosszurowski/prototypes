@@ -79,12 +79,8 @@ Simple function to convert `NodeList`s and `HTMLCollection`s to Arrays. Helpful 
 
 **Yes, it uses prototypes**, hence the name.
 
-People have been very scared about using prototypes for a while, though projects like [SugarJS](http://sugarjs.com) are changing this. This fear of prototypes makes sense when building a large web app with a massive team: having unexpected functions and properties polluting your object's enumerable properties can be catastrophic. But, building one-off sites is a whole other deal.
+People have been very scared about using prototypes for a long time, though projects like [SugarJS](http://sugarjs.com) are starting to change their negative perception. This fear of prototypes makes sense when building a large web app with a massive team: having unexpected functions and properties polluting enumerable properties can be catastrophic. But, building one-off sites is a whole other deal.
 
-Especially with ECMAScript 5, we can now add non-enumerable properties and functions to objects, addressing enumerable concerns concerns. 
+Especially with ECMAScript 5, we can now add non-enumerable properties and functions to objects, addressing concerns around unexpected properties being enumerable.
 
-And for issues like the [volatility of "host objects"](http://sugarjs.com/native#modifying_host_objects), these problems exist for all web libraries, which rely on host objects to access other host objects. While not guaranteed, browser JS APIs are designed with heavy discussion around backwards-compatibility. And again, for building one-off sites, this is hardly a major issue.
-
-#### Native APIs Intersecting
-
-First off, explicitly setting prototypes naturally overrides browser-native functionality, so this isn't actually a concern except for new code. In which case, I'm totally down to change/remove bits of this as browsers either use the function names or provide similar functionality.
+As for issues like the [volatility of "host objects"](http://sugarjs.com/native#modifying_host_objects), many of these problems (such as performance overheads and the potential for errors) are many years outdated. The only potential issue with extending host objects is future API changes. But then again, the whole web relies on the functionality in this library. The only non-future-proof aspect of these prototypes are if browsers decide to change the names of classes such as `HTMLElement`, which I don't suspect will be happening in the near future. And again, for building one-off sites, this is hardly a major issue.
