@@ -1,4 +1,4 @@
-This is a collection of prototypes for standard DOM Classes that I've found very helpful for the past couple of projects.
+This is a collection of prototypes for standard DOM Classes that make front-end development life a little easier. They've been very helpful for the past couple of (small) projects I've done.
 
 ## API
 
