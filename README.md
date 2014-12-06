@@ -37,12 +37,13 @@ element.findAll('.class');  // returns array of child elements with .class
 Retrieves the first parent elements that match `selector`.
 
 ```javascript
-// given the html:
-//   <div class="parent">
-//     <div class="wrapper">
-//       <a href="#" class="link">Link</a>
-//     </div>
-//  </div>
+/**
+ * <div class="parent">
+ *   <div class="wrapper">
+ *     <a href="#" class="link">Link</a>
+ *   </div>
+ * </div>
+ */
 
 var link = document.find('.link');
 link.findParent('.parent');           // returns the .parent element
