@@ -1,13 +1,25 @@
 This is a collection of prototypes for standard DOM Classes that make front-end development life a little easier. They've been very helpful for the past couple of (small) projects I've done.
 
-It transforms code like this:
+It lets you take code like this:
 
 ```javascript
 var element = document.querySelector('.class');
-var parent;
+element.parentNode.removeChild(element);
 
-while
+[].forEach.call(document.querySelectorAll('a'), function(element) {
+	element.addEventListener('click', function(e) {
+		// handle click
+	});
+});
+```
 
+And make it into this:
+
+```javascript
+document.find('.class').remove();
+document.findAll('a').bind('click', function(e) {
+	// handle click
+});
 ```
 
 ## API
