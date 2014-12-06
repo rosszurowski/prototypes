@@ -4,7 +4,7 @@ This is a collection of prototypes for standard DOM Classes that make front-end 
 
 #### DOM Querying/Manipulation
 
-##### #find(query)
+##### `#find(query)`
 
 Finds the first child element that matches `selector` and returns it. Just a quick wrapper around `querySelector`.
 
@@ -14,22 +14,22 @@ element.find('.class');
 docFragment.find('.class');
 ```
 
-##### #findAll(query)
+##### `#findAll(query)`
 
 Finds all children elements that match `selector` and returns them as a NodeList. Just a quick wrapper around `querySelectorAll`.
 
-##### #findParent(query)
+##### `#findParent(query)`
 
 Retrieves the first parent elements that match `selector` and returns it.
 
-##### #remove()
+##### `#remove()`
 
 Removes the element from the DOM. Uses the browser-native function if it exists.
 
 
 #### Events
 
-##### #bind(type, fn, [useCapture])
+##### `#bind(type, fn, [useCapture])`
 
 Binds an event listener to the given `type` of event, using `fn` and `useCapture`. Works on Elements, NodeLists, and the Document and Window.
 
@@ -42,15 +42,15 @@ function transitionEnd(e) {
 }
 ```
 
-##### #unbind(type, fn, [useCapture])
+##### `#unbind(type, fn, [useCapture])`
 
 Unbinds event listeners of the given `type`. Also works with multiple events.
 
-##### #once(type, fn, useCapture)
+##### `#once(type, fn, useCapture)`
 
 Binds an event listener that only runs once and then removes itself.
 
-##### #delegate(type, selector, fn, useCapture)
+##### `#delegate(type, selector, fn, useCapture)`
 
 Delegates all `type` events from `selector` to element. This is useful if you're constantly adding and removing elements to the DOM that need event listeners.
 
@@ -67,11 +67,11 @@ newTodo.click();
 
 #### Utilities
 
-##### #forEach(fn)
+##### `#forEach(fn)`
 
 A wrapper around `Array.forEach` for a NodeList.
 
-##### #toArray()
+##### `#toArray()`
 
 Simple function to convert `NodeList`s and `HTMLCollection`s to Arrays. Helpful for using any browser array functionality like `#filter()` or `#map()` on the results of `findAll`.
 
@@ -79,10 +79,12 @@ Simple function to convert `NodeList`s and `HTMLCollection`s to Arrays. Helpful 
 
 **Yes, it uses prototypes**, hence the name.
 
-People are always very scared about using prototypes, though projects like (SugarJS)[http://sugarjs.com] are helping to alleviate this. This fear of prototypes makes sense when building a large web app with a massive team: having unexpected functions and properties polluting your object's enumerable properties can be catastrophic. But, building one-off sites is a whole other deal.
+People have been very scared about using prototypes for a long time, though projects like [SugarJS](http://sugarjs.com) are starting to change their negative perception. Thanks to new functionality within ECMAScript 5, we can now add non-enumerable properties and functions to objects, addressing concerns around unexpected properties and methods showing up in `for .. in` loops.
 
-Especially with ECMAScript 5, we can now add non-enumerable properties and functions to objects, addressing these concerns. 
+Other problems, such as performance overheads are many years outdated. If you build for modern browsers, these things needn't be of any concern.
 
-#### Native APIs Intersecting
+Another oft-cited issue is the opaqueness of adding global prototypes. New developers coming in to a project may not know what `[2,4,5].foo()` does, or where to find it. Again, these issues come down to developing clearly and responsibly. By defining prototypes in one place with semantic names and proper documentation, these issues are allieviated.
 
-First off, explicitly setting prototypes naturally overrides browser-native functionality, so this isn't actually a concern except for new code. In which case, I'm totally down to change/remove bits of this as browsers either use the function names or provide similar functionality.
+The only relevant issue anymore is the [volatility of "host objects"](http://sugarjs.com/native#modifying_host_objects). In Javascript, there are two types of objects: native objects that defined as part of the ECMAScript speicification (`Object`, `String`, `Array`, etc) and host objects which are defined by the javascript environment. For the DOM this includes objects such as `HTMLElement`, `NodeList`, and so on. However, these host objects are also governed by a [strict specification](http://www.w3.org/TR/dom/), and careful consideration is given before changing any of the critical APIs. Additionally, functionality already built into the spec can be deferred to (`Element#remove()` for example), and polyfilled if it doesn't exist.
+
+The issue isn't with DOM extension, it's careless implementations of DOM extension. Javascript is, by nature, a prototypal language. We end up with more clear and concise code when we use this nature to our advantage.
