@@ -1,0 +1,22 @@
+{
+  "name": "prototypes",
+  "version": "0.0.1",
+  "description": "A library of common prototypes to make front-end work a little easier.",
+  "main": "prototypes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rosszurowski/prototypes.git"
+  },
+  "keywords": [
+    "dom"
+  ],
+  "author": "Ross Zurowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rosszurowski/prototypes/issues"
+  },
+  "homepage": "https://github.com/rosszurowski/prototypes"
+}
