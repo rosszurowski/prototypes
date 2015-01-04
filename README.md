@@ -149,3 +149,17 @@ Another oft-cited issue is the opaqueness of adding global prototypes. New devel
 The only relevant issue anymore is the [volatility of "host objects"](http://sugarjs.com/native#modifying_host_objects). In Javascript, there are two types of objects: native objects that defined as part of the ECMAScript speicification (`Object`, `String`, `Array`, etc) and host objects which are defined by the javascript environment. For the DOM this includes objects such as `HTMLElement`, `NodeList`, and so on. However, these host objects are also governed by a [strict specification](http://www.w3.org/TR/dom/), and careful consideration is given before changing any of the critical APIs. Additionally, functionality already built into the spec can be deferred to (`Element#remove()` for example), and polyfilled if it doesn't exist.
 
 The issue isn't with DOM extension, it's careless implementations of DOM extension. Javascript is, by nature, a prototypal language. We end up with more clear and concise code when we use this nature to our advantage.
+
+
+## Tests
+
+To run the tests, clone the repo and run
+
+```bash
+npm install
+npm test
+```
+
+## License
+
+MIT
