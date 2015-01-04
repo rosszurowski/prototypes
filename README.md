@@ -1,20 +1,17 @@
-This is a collection of prototypes for standard DOM Classes that make front-end development life a little easier. They've been very helpful for the past couple of (small) projects I've done.
+# Prototypes [![Circle CI](https://circleci.com/gh/rosszurowski/prototypes.svg?style=svg&circle-token=fefa1c159577625b6f3035b52701f4c19ced961f)](https://circleci.com/gh/rosszurowski/prototypes)
 
-It lets you take code like this:
+A library of prototypes for standard DOM classes that make front-end development a little easier. They've been very helpful for the past couple of projects I've done.
 
-```javascript
-var element = document.querySelector('.class');
-element.parentNode.removeChild(element);
+## Installation
 
-[].forEach.call(document.querySelectorAll('a'), function(element) {
-	element.addEventListener('click', function(e) {
-		// handle click
-	});
-});
+Download the repo and link the javascript file into your project like so:
+```html
+<script src="/path/to/prototypes.js"></script>
 ```
 
-And make it into this:
+## Usage
 
+Prototypes removes the redundancy of browser-native calls and lets you write code like this
 ```javascript
 document.find('.class').remove();
 document.findAll('a').bind('click', function(e) {
