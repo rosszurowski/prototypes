@@ -4,7 +4,7 @@ A library of prototypes for standard DOM classes that make front-end development
 
 ## Installation
 
-Download the repo and link the javascript file into your project like so:
+Download the repo and link the javascript file into your project with
 ```html
 <script src="/path/to/prototypes.js"></script>
 ```
