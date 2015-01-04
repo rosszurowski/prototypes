@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Prototype Tests</title>
+	<link href="../node_modules/mocha/mocha.css" rel="stylesheet" type="text/css" />
+	<link href="prototypes.css" rel="stylesheet" type="text/css" />
+	<script>
+		// fix for PhantomJS
+		if (!Window) {
+			var Window = {};
+			Window.prototype = window;
+		}
+	</script>
+	<script src="../prototypes.js"></script>
+</head>
+<body>
+	<div id="fixtures">
+		<a href="#">Foo</a>
+		<a href="#">Bar</a>
+		<div>
+			<strong>Hi</strong>
+		</div>
+		<div class="delegater">
+			<span></span>
+			<span></span>
+		</div>
+		<div class="bind-test"></div>
+		<span class="remove-me"></span>
+		<span class="remove-me-chain"></span>
+	</div>
+	<div id="mocha"></div>
+	<script src="../node_modules/mocha/mocha.js"></script>
+	<script src="../node_modules/chai/chai.js"></script>
+	<script>
+		mocha.setup('bdd');
+		expect = chai.expect;
+	</script>
+	<script src="prototypes.js"></script>
+	<script>
+		if (window.mochaPhantomJS) mochaPhantomJS.run();
+		else mocha.run();
+	</script>
+</body>
+</html>

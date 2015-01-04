@@ -2,6 +2,7 @@
 
 	/**
 	 * Find first child element that matches `selector`
+	 * Alias for `querySelector`
 	 *
 	 * @param	{String}			selector
 	 * @return	{HTMLElement}
@@ -33,15 +34,12 @@
 	DocumentFragment.prototype.findParent =
 	HTMLElement.prototype.findParent =
 	HTMLDocument.prototype.findParent = function(selector) {
-
 		var el = this.parentNode;
 		while (el) {
 			if (el.matches && el.matches(selector)) return el;
 			el = el.parentNode;
 		}
-
 		return false;
-
 	}
 
 	NodeList.prototype.forEach = Array.prototype.slice.call(this).forEach;
@@ -54,18 +52,10 @@
 	 * @return	{HTMLElement|NodeList}
 	 */
 	var remove = function() {
-
-		var self = this;
-
 		// defer to browser standard if it exists
-		if (this.parentNode)
-			this.parentNode.removeChild(this);
-		else
-			[].forEach.call(this, function(el) {
-				el.remove();
-			});
-
-		return self;
+		if (this.parentNode) this.parentNode.removeChild(this);
+		else [].forEach.call(this, function(el) { el.remove(); });
+		return this;
 	}
 
 	// get the prefixed .matches
@@ -77,7 +67,7 @@
 		HTMLElement.prototype.oMatchesSelector);
 
 	// if their browser already supports it, don't polyfill	
-	if (!HTMLElement.prototype.remove) HTMLElement.prototype.remove = remove;
+	HTMLElement.prototype.remove = remove;
 	NodeList.prototype.remove = remove;
 
 
@@ -173,6 +163,15 @@
 
 	}
 
+	/**
+	 * Delegates all events from selector to the given element.
+	 *
+	 * @param {String}    event
+	 * @param {String}    selector
+	 * @param {Function}  fn
+	 * @param {Boolean}   useCapture
+	 * @returns {Boolean}
+	 */
 	Window.prototype.delegate = 
 	HTMLDocument.prototype.delegate =
 	HTMLElement.prototype.delegate = function(event, selector, fn, useCapture) {
